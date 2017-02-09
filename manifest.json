@@ -1,0 +1,22 @@
+{
+	"manifest_version": 2,
+
+	"name": "Flickr Info",
+	"description": "Flickr image info fetcher",
+	"version": "0.1",
+
+	"icons": {
+		"128": "icon_128.png"
+	},
+
+	"browser_action": {
+		"default_icon": "icon_19.png",
+		"default_title": "Flickr Info",
+		"default_popup": "popup.html"
+	},
+
+	"permissions": [
+		"https://www.flickr.com/",
+		"storage"
+	]
+}
