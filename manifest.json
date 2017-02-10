@@ -15,8 +15,14 @@
 		"default_popup": "popup.html"
 	},
 
+	"content_scripts": [
+		{
+			"matches": ["https://www.flickr.com/photos/*/*"],
+			"js": ["storage_promise.js", "page.js"]
+		}
+	],
+
 	"permissions": [
-		"https://www.flickr.com/",
 		"storage"
 	]
 }
