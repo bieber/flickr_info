@@ -7,10 +7,26 @@
 	}
 	var engagementView = engagementViews[0];
 
+	var statusDisplay = document.createElement('img');
+	statusDisplay.src = chrome.extension.getURL('icon_19_white_hourglass.png');
+	var statusLink = document.createElement('a');
+	statusLink.appendChild(statusDisplay);
+	var statusDiv = document.createElement('div');
+	statusDiv.appendChild(statusLink);
+	engagementView.style.width = '260px';
+	engagementView.appendChild(statusDiv);
+	engagementView.addEventListener(
+		'DOMNodeInserted',
+		function() {
+			engagementView.appendChild(statusDiv);
+		}
+	);
+
 	var matches = /https:\/\/www.flickr.com\/photos\/.*\/(\d+)\/.*/.exec(
 		window.location.href
 	);
-	if (matches.length !== 2) {
+	if (matches === null) {
+		statusDisplay.src = chrome.extension.getURL('icon_19_white_x.png');
 		return;
 	}
 	var id = matches[1];
@@ -34,7 +50,28 @@
 				var farm = data.photo.farm;
 				var server = data.photo.server;
 				var secret = data.photo.secret;
-				console.log(farm, server, secret);
+
+				var textP = document.createElement('p');
+				textP.textContent = farm+' '+server+' '+id+' '+secret;
+
+				var dialog = document.createElement('dialog');
+				dialog.appendChild(textP);
+
+				var closeButton = document.createElement('button');
+				closeButton.textContent = 'Close';
+				closeButton.addEventListener('click', () => dialog.close());
+				dialog.appendChild(closeButton);
+
+				document.body.appendChild(dialog);
+
+				statusDisplay.src = chrome.extension.getURL('icon_19_white.png');
+				statusLink.addEventListener('click', () => dialog.showModal());
+			}
+		).catch(
+			function() {
+				statusDisplay.src = chrome.extension.getURL(
+					'icon_19_white_x.png'
+				);
 			}
 		);
 })();
