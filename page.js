@@ -22,7 +22,7 @@
 		}
 	);
 
-	var matches = /https:\/\/www.flickr.com\/photos\/.*\/(\d+)\/.*/.exec(
+	var matches = /https:\/\/www.flickr.com\/photos\/.*\/(\d+).*/.exec(
 		window.location.href
 	);
 	if (matches === null) {
