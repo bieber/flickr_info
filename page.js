@@ -50,9 +50,12 @@
 				var farm = data.photo.farm;
 				var server = data.photo.server;
 				var secret = data.photo.secret;
+				var title = data.photo.title._content
+					? '"'+data.photo.title._content.replace(/\"/g, '\\"')+'"'
+					: '';
 
 				var textP = document.createElement('p');
-				textP.textContent = farm+' '+server+' '+id+' '+secret;
+				textP.textContent = [farm, server, secret, title].join(' ');
 
 				var dialog = document.createElement('dialog');
 				dialog.appendChild(textP);
