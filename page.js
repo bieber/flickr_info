@@ -59,6 +59,7 @@
 				textP.textContent = [
 					farm,
 					server,
+					id,
 					secret,
 					owner,
 					title
