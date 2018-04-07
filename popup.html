@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<body>
+		<div id="code_display" style="display:none">
+			<strong>Code: </strong>
+			<span id="code_display_span"></span>
+			<br>
+		</div>
+
 		<form id="set_api_key" style="display: none;">
 			<label for="api_key_input">API Key: </label>
 			<input id="api_key_input" type="text">
@@ -8,7 +14,7 @@
 		</form>
 
 		<div id="clear_api_key" style="display:none">
-			<label for="display">API Key: </label>
+			<strong><label for="display">API Key: </label></strong>
 			<span id="display"></span>
 			<form id="clear_api_key_form">
 				<input type="submit" value="Clear API Key">
