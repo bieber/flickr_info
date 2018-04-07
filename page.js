@@ -5,7 +5,6 @@
 		window.location.href
 	);
 	if (matches === null) {
-		statusDisplay.src = chrome.extension.getURL('icon_19_white_x.png');
 		return;
 	}
 	var id = matches[1];
